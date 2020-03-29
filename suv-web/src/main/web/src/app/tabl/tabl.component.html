@@ -1,0 +1,49 @@
+<div class="mat-elevation-z8">
+  <mat-paginator #paginator
+      [length]="dataSource.data.length"
+      [pageIndex]="0"
+      [pageSize]="10"
+      [pageSizeOptions]="[2, 5, 10]">
+  </mat-paginator>
+
+  <table mat-table class="full-width-table" [dataSource]="dataSource" matSort aria-label="Elements">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Id</th>
+      <td mat-cell *matCellDef="let row">{{row.id}}</td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>User</th>
+      <td mat-cell *matCellDef="let row">{{row.name}}</td>
+    </ng-container>
+
+    <!-- Pass Column -->
+    <ng-container matColumnDef="pass">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Pass</th>
+      <td mat-cell *matCellDef="let row">{{row.pass}}</td>
+    </ng-container>
+
+    <!-- Login Column -->
+    <ng-container matColumnDef="login">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Login</th>
+      <td mat-cell *matCellDef="let row"><mat-checkbox [checked]="row.isLoggedIn" (click)="sort"></mat-checkbox></td>
+    </ng-container>
+
+    <!--&lt;!&ndash; Edit Column &ndash;&gt;
+    <ng-container matColumnDef="editCell">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Edit</th>
+      <td mat-cell *matCellDef="let row"><button class="btn btn-success" (click)="sort">Edit</button></td>
+    </ng-container>
+
+    &lt;!&ndash; Delete Column &ndash;&gt;
+    <ng-container matColumnDef="deleteCell">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Delete</th>
+      <td mat-cell *matCellDef="let row"><button class="btn btn-success" (click)="sort" style="margin-left: 20px;">Delete</button></td>
+    </ng-container>
+-->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>

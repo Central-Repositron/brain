@@ -1,0 +1,25 @@
+.add-files-btn {
+  float: left;
+}
+
+:host {
+  height: 100%;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.actions {
+  justify-content: flex-end;
+}
+
+.container {
+  height: 100%;
+}
+
+.closeBtn {
+  cursor: pointer;
+  float:right;
+  font-family: "Cantarell Extra Bold",Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  padding-top: 7.5px;
+}

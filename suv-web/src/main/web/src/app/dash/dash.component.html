@@ -1,0 +1,30 @@
+<div class="grid-container">
+  <mat-grid-list cols="2" rowHeight="350px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+            <!--<button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>-->
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div *ngIf="card.title === 'Client Module'; then clientBlock"></div>
+          <ng-template #clientBlock><div><app-client></app-client></div></ng-template>
+          <div *ngIf="card.title === 'Login Module'; then synopsisBlock"></div>
+          <ng-template #synopsisBlock><div><app-tabl></app-tabl></div></ng-template>
+          <div *ngIf="card.title === 'Dealer Module'; then dealerBlock"></div>
+          <ng-template #dealerBlock><div><app-dealer></app-dealer></div></ng-template>
+          <div *ngIf="card.title === 'Results Module'; then resultsBlock"></div>
+          <ng-template #resultsBlock><div>Result Card Content Here</div></ng-template>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
